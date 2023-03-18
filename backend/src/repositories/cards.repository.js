@@ -36,7 +36,15 @@ async function getCard(id) {
 
 async function updateCard(id) {}
 
-async function deleteCard(id) {}
+async function deleteCard(id) {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    await CardInfo.findOneAndDelete({ _id: id });
+  } catch (err) {
+    throw err;
+  }
+}
 
 export default {
   createCard,

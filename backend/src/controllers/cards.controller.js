@@ -34,7 +34,14 @@ async function getCard(req, res, next) {
 
 async function updateCard(req, res, next) {}
 
-async function deleteCard(req, res, next) {}
+async function deleteCard(req, res, next) {
+  try {
+    await CardService.deleteCard(req.params.id);
+    res.json("Card deletado com sucesso.");
+  } catch (error) {
+    next(error);
+  }
+}
 
 export default {
   createCard,

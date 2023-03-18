@@ -19,7 +19,14 @@ async function getCard(id) {
 
 async function updateCard(card) {}
 
-async function deleteCard(id) {}
+async function deleteCard(id) {
+  try {
+    const card = await CardRepository.getCard(id);
+    if (card) return await CardRepository.deleteCard(id);
+  } catch (error) {
+    throw new Error("Não existe card com o id digitado.");
+  }
+}
 
 export default {
   createCard,
