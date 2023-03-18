@@ -5,7 +5,9 @@ async function createCard(card) {
   return await CardRepository.createCard(card);
 }
 
-async function getCards() {}
+async function getCards() {
+  return await CardRepository.getCards();
+}
 
 async function getCard(id) {}
 

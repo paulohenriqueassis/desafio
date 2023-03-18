@@ -12,7 +12,16 @@ async function createCard(cardInfo) {
   }
 }
 
-async function getCards() {}
+async function getCards() {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    const query = CardInfo.find({});
+    return await query.exec();
+  } catch (err) {
+    throw err;
+  }
+}
 
 async function getCard(id) {}
 

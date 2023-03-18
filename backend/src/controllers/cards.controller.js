@@ -18,7 +18,11 @@ async function createCard(req, res, next) {
 }
 
 async function getCards(req, res, next) {
-  
+  try {
+    res.send(await CardService.getCards());
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function getCard(req, res, next) {
