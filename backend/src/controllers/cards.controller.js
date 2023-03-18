@@ -1,6 +1,5 @@
 import CardService from "../services/cards.service.js";
 
-
 async function createCard(req, res, next) {
   try {
     let card = req.body;
@@ -26,16 +25,16 @@ async function getCards(req, res, next) {
 }
 
 async function getCard(req, res, next) {
-  
+  try {
+    res.send(await CardService.getCard(req.params.id));
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function updateCard(req, res, next) {
-  
-}
+async function updateCard(req, res, next) {}
 
-async function deleteCard(req, res, next) {
-  
-}
+async function deleteCard(req, res, next) {}
 
 export default {
   createCard,
@@ -44,4 +43,3 @@ export default {
   deleteCard,
   updateCard,
 };
-

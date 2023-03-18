@@ -9,7 +9,14 @@ async function getCards() {
   return await CardRepository.getCards();
 }
 
-async function getCard(id) {}
+async function getCard(id) {
+  try {
+    const card = await CardRepository.getCard(id);
+    return card;
+  } catch (error) {
+    throw new Error("Não existe card com o id digitado.");
+  }
+}
 
 async function updateCard(card) {}
 

@@ -23,7 +23,16 @@ async function getCards() {
   }
 }
 
-async function getCard(id) {}
+async function getCard(id) {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    const query = CardInfo.findById({ _id: id });
+    return await query.exec();
+  } catch (err) {
+    throw err;
+  }
+}
 
 async function updateCard(id) {}
 
