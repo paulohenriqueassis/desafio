@@ -34,7 +34,15 @@ async function getCard(id) {
   }
 }
 
-async function updateCard(id) {}
+async function updateCard(cardInfo) {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    await CardInfo.findByIdAndUpdate({ _id: cardInfo.id }, cardInfo);
+  } catch (err) {
+    throw err;
+  }
+}
 
 async function deleteCard(id) {
   try {

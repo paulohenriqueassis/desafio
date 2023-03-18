@@ -17,7 +17,13 @@ async function getCard(id) {
   }
 }
 
-async function updateCard(card) {}
+async function updateCard(card) {
+  try {
+    return await CardRepository.updateCard(card);
+  } catch (error) {
+    throw new Error("Nao existe card com esse id.");
+  }
+}
 
 async function deleteCard(id) {
   try {
