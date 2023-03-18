@@ -18,5 +18,6 @@ module.exports = {
     eqeqeq: "error",
     "no-duplicate-imports": "error",
     "no-extra-parens": "error",
+    "no-useless-catch": "off"
   },
 };
