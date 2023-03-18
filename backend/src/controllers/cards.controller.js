@@ -6,12 +6,12 @@ async function createCard(req, res, next) {
     let card = req.body;
     if (!card.texto || !card.data_criacao || !card.tags) {
       throw new Error(
-        "Texto, data de criação e tags são obrigatórios para a criação de um card."
+        "Texto, data_criacao e tags são obrigatórios para a criação de um card."
       );
     }
 
     card = await CardService.createCard(card);
-    res.send(card);
+    res.json("Card criado com sucesso.");
   } catch (error) {
     next(error);
   }
