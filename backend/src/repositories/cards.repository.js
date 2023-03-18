@@ -1,4 +1,16 @@
-async function createCard(cardInfo) {}
+import CardSchema from "../schemas/cards.schema.js";
+import { connect } from "../database/mongodb.js";
+
+async function createCard(cardInfo) {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    cardInfo = new CardInfo(cardInfo);
+    await cardInfo.save();
+  } catch (err) {
+    throw err;
+  }
+}
 
 async function getCards() {}
 
