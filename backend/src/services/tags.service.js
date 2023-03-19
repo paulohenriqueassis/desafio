@@ -27,7 +27,7 @@ async function deleteTag(data) {
     const tag = await TagRepository.deleteTag(data);
     return tag;
   } catch (error) {
-    throw new Error("DELETAR Tag não encontrada, verifique os ids digitados.");
+    throw new Error("Tag não encontrada, verifique os ids digitados.");
   }
 }
 
