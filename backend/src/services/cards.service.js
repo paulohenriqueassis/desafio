@@ -22,7 +22,7 @@ async function getCardByTagName(id) {
     const card = await CardRepository.getCardByTagName(id);
     return card;
   } catch (error) {
-    throw new Error("Não existe card com o nome digitado.");
+    throw new Error("Não existem cards com o nome digitado.");
   }
 }
 

@@ -5,7 +5,7 @@ async function createTag(req, res, next) {
     const { name, data_modificacao } = req.body;
     if (!name || !data_modificacao) {
       throw new Error(
-        "Os campos name e a data de modificação são obrigátorios para criação da tag e atualização do card."
+        "Os campos name e data de modificação são obrigátorios para criação da tag e atualização do card."
       );
     }
 
