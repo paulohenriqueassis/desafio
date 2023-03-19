@@ -3,10 +3,19 @@ import TagSchema from "./tags.schema.js";
 
 const CardSchema = new mongoose.Schema(
   {
-    texto: String,
-    data_criacao: String,
+    texto: {
+      type: String,
+      required: true,
+    },
+    data_criacao: {
+      type: String,
+      required: true,
+    },
     data_modificacao: String,
-    tags: [TagSchema],
+    tags: {
+      type: [TagSchema],
+      required: true,
+    },
   },
   { collection: "insights" }
 );
