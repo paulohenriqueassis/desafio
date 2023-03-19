@@ -8,16 +8,14 @@ async function createTag(req, res, next) {
         "Os campos name e data de modificação são obrigátorios para criação da tag e atualização do card."
       );
     }
-
     const { cardId } = req.params;
     const cardInfo = {
       cardId,
       name,
       data_modificacao,
     };
-
     await TagService.createTag(cardInfo);
-    res.json("Tag criada com sucesso.");
+    res.status(201).send();
   } catch (error) {
     next(error);
   }
@@ -25,7 +23,8 @@ async function createTag(req, res, next) {
 
 async function getTag(req, res, next) {
   try {
-    res.send(await TagService.getTag(req.params));
+    const tag = await TagService.getTag(req.params);
+    res.status(200).json(tag);
   } catch (error) {
     next(error);
   }
@@ -39,7 +38,6 @@ async function updateTag(req, res, next) {
         "Os campos name e data de modificação são obrigatórios para a atualização de uma tag."
       );
     }
-
     const { cardId, id } = req.params;
     const data = {
       id,
@@ -48,7 +46,7 @@ async function updateTag(req, res, next) {
       data_modificacao,
     };
     await TagService.updateTag(data);
-    res.json("Tag atualizada com sucesso.");
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
@@ -69,7 +67,7 @@ async function deleteTag(req, res, next) {
       data_modificacao,
     };
     await TagService.deleteTag(data);
-    res.json("Tag deletada com sucesso.");
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
