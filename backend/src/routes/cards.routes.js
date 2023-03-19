@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.post("/", CardController.createCard);
 router.get("/", CardController.getCards);
-router.get("/:id", CardController.getCard);
+router.get("/findById/:id", CardController.getCardById);
+router.get("/findByTagName/:name", CardController.getCardByTagName);
 router.put("/:id", CardController.updateCard);
 router.delete("/:id", CardController.deleteCard);
 

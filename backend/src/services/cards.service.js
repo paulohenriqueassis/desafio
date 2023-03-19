@@ -8,12 +8,21 @@ async function getCards() {
   return await CardRepository.getCards();
 }
 
-async function getCard(id) {
+async function getCardById(id) {
   try {
-    const card = await CardRepository.getCard(id);
+    const card = await CardRepository.getCardById(id);
     return card;
   } catch (error) {
     throw new Error("Não existe card com o id digitado.");
+  }
+}
+
+async function getCardByTagName(id) {
+  try {
+    const card = await CardRepository.getCardByTagName(id);
+    return card;
+  } catch (error) {
+    throw new Error("Não existe card com o nome digitado.");
   }
 }
 
@@ -27,7 +36,7 @@ async function updateCard(card) {
 
 async function deleteCard(id) {
   try {
-    const card = await CardRepository.getCard(id);
+    const card = await CardRepository.getCardById(id);
     if (card) return await CardRepository.deleteCard(id);
   } catch (error) {
     throw new Error("Não existe card com o id digitado.");
@@ -37,7 +46,8 @@ async function deleteCard(id) {
 export default {
   createCard,
   getCards,
-  getCard,
+  getCardById,
+  getCardByTagName,
   updateCard,
   deleteCard,
 };

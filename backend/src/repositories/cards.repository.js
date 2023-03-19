@@ -23,11 +23,22 @@ async function getCards() {
   }
 }
 
-async function getCard(id) {
+async function getCardById(id) {
   try {
     const mongoose = await connect();
     const CardInfo = mongoose.model("CardInfo", CardSchema);
     const query = CardInfo.findById({ _id: id });
+    return await query.exec();
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getCardByTagName(tagName) {
+  try {
+    const mongoose = await connect();
+    const CardInfo = mongoose.model("CardInfo", CardSchema);
+    const query = CardInfo.find({ "tags.name": new RegExp(tagName, "i") });
     return await query.exec();
   } catch (err) {
     throw err;
@@ -57,7 +68,8 @@ async function deleteCard(id) {
 export default {
   createCard,
   getCards,
-  getCard,
+  getCardById,
+  getCardByTagName,
   updateCard,
   deleteCard,
 };
