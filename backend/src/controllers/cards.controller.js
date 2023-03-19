@@ -3,7 +3,7 @@ import CardService from "../services/cards.service.js";
 async function createCard(req, res, next) {
   try {
     const card = req.body;
-    if (!card.texto || !card.data_criacao || !card.tags) {
+    if (!card.texto || !card.data_criacao || !card.tags || !card.tags.length) {
       throw new Error(
         "Os campos texto, data de criação e tags são obrigatórios para a criação de um card."
       );
@@ -42,8 +42,8 @@ async function getCardByTagName(req, res, next) {
 
 async function updateCard(req, res, next) {
   try {
-    const { texto, data_modificacao } = req.body;
-    if (!texto || !data_modificacao) {
+    const { texto, data_modificacao, tags } = req.body;
+    if (!texto || !data_modificacao || tags) {
       throw new Error(
         "Os campos texto e data de modificação são obrigatórios para a atualização de um card."
       );
