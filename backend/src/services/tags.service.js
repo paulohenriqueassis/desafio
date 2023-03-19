@@ -18,7 +18,7 @@ async function updateTag(tag) {
   try {
     return await TagRepository.updateTag(tag);
   } catch (error) {
-    throw new Error("Nao existe tag com esse id.");
+    throw new Error("Não existe tag com esse id.");
   }
 }
 
