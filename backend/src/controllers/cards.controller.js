@@ -24,9 +24,17 @@ async function getCards(req, res, next) {
   }
 }
 
-async function getCard(req, res, next) {
+async function getCardById(req, res, next) {
   try {
-    res.send(await CardService.getCard(req.params.id));
+    res.send(await CardService.getCardById(req.params.id));
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getCardByTagName(req, res, next) {
+  try {
+    res.send(await CardService.getCardByTagName(req.params.name));
   } catch (error) {
     next(error);
   }
@@ -64,8 +72,9 @@ async function deleteCard(req, res, next) {
 
 export default {
   createCard,
-  getCard,
+  getCardById,
   getCards,
+  getCardByTagName,
   deleteCard,
   updateCard,
 };
