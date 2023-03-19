@@ -8,7 +8,7 @@ const CardSchema = new mongoose.Schema(
     data_modificacao: String,
     tags: [TagSchema],
   },
-  { collection: "cards" }
+  { collection: "insights" }
 );
 
 export default CardSchema;

@@ -4,7 +4,7 @@ const TagSchema = new mongoose.Schema(
   {
     name: String,
   },
-  { collection: "cards" }
+  { collection: "insights" }
 );
 
 export default TagSchema;
