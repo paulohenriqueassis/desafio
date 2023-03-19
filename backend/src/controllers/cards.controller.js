@@ -5,7 +5,7 @@ async function createCard(req, res, next) {
     const card = req.body;
     if (!card.texto || !card.data_criacao || !card.tags) {
       throw new Error(
-        "Texto, data_criacao e tags são obrigatórios para a criação de um card."
+        "Os campos texto, data de criação e tags são obrigatórios para a criação de um card."
       );
     }
 
@@ -37,7 +37,7 @@ async function updateCard(req, res, next) {
     const { texto, data_modificacao } = req.body;
     if (!texto || !data_modificacao) {
       throw new Error(
-        "Texto, data_modificacao são obrigatórios para a atualização de um card."
+        "Os campos texto e data de modificação são obrigatórios para a atualização de um card."
       );
     }
 
