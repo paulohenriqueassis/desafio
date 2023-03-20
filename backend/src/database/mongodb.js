@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 mongoose.set("strictQuery", false);
 
-async function connect() {
-  const uri =
-    "mongodb+srv://pauloassis:EAPmORs6tt1CO9uk@insights.dwsprla.mongodb.net/Insights";
-  return mongoose.connect(uri, {
+async function connect(url = process.env.MONGO_URI) {
+  return mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
