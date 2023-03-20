@@ -38,9 +38,9 @@ async function updateTag(req, res, next) {
         "Os campos name e data de modificação são obrigatórios para a atualização de uma tag."
       );
     }
-    const { cardId, id } = req.params;
+    const { cardId, tagId } = req.params;
     const data = {
-      id,
+      tagId,
       cardId,
       name,
       data_modificacao,
@@ -60,9 +60,9 @@ async function deleteTag(req, res, next) {
         "O campo data de modificação é obrigatório para atualização do card após a remoção da tag."
       );
     }
-    const { cardId, id } = req.params;
+    const { cardId, tagId } = req.params;
     const data = {
-      id,
+      tagId,
       cardId,
       data_modificacao,
     };

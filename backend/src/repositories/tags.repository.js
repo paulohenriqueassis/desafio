@@ -16,7 +16,7 @@ async function createTag(tagInfo) {
 async function getTag(tagInfo) {
   try {
     const card = await CardRepository.getCardById(tagInfo.cardId);
-    const tag = card.tags.find((tag) => tag._id.toHexString() === tagInfo.id);
+    const tag = card.tags.find((tag) => tag._id.toHexString() === tagInfo.tagId);
     if (!card || !tag) return;
     return tag;
   } catch (err) {
@@ -28,9 +28,8 @@ async function updateTag(tagInfo) {
   try {
     const card = await CardRepository.getCardById(tagInfo.cardId);
     const tagIndex = card.tags.findIndex(
-      (tag) => tag._id.toHexString() === tagInfo.id
+      (tag) => tag._id.toHexString() === tagInfo.tagId
     );
-
     card.tags[tagIndex].name = tagInfo.name;
     card.data_modificacao = tagInfo.data_modificacao;
     await CardRepository.updateCard(card);

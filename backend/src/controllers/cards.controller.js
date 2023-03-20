@@ -17,7 +17,8 @@ async function createCard(req, res, next) {
 
 async function getCards(req, res, next) {
   try {
-    const cards = await CardService.getCards();
+    const { name } = req.query;
+    const cards = await CardService.getCards(name);
     res.status(200).json(cards);
   } catch (error) {
     next(error);
@@ -34,15 +35,6 @@ async function getCardById(req, res, next) {
   }
 }
 
-async function getCardByTagName(req, res, next) {
-  try {
-    const { name } = req.params;
-    const card = await CardService.getCardByTagName(name);
-    res.status(200).json(card);
-  } catch (error) {
-    next(error);
-  }
-}
 
 async function updateCard(req, res, next) {
   try {
@@ -79,7 +71,6 @@ export default {
   createCard,
   getCardById,
   getCards,
-  getCardByTagName,
   deleteCard,
   updateCard,
 };
