@@ -52,8 +52,16 @@ export const swaggerDocument = {
         },
       },
       get: {
-        description: "Lista todos os cards.",
+        description: "Lista todos os cards ou um card pelo nome.",
         tags: ["Cards"],
+        parameters: [
+          {
+            in: "query",
+            name: "name",
+            type: "string",
+            required: false,
+          },
+        ],
         responses: {
           200: {
             description: "OK",
@@ -61,7 +69,7 @@ export const swaggerDocument = {
         },
       },
     },
-    "/cards/findById/{id}": {
+    "/cards/{id}": {
       get: {
         description: "Lista um card pelo id.",
         tags: ["Cards"],
@@ -82,30 +90,6 @@ export const swaggerDocument = {
           },
         },
       },
-    },
-    "/cards/findByTagName/{name}": {
-      get: {
-        description: "Lista os card pelo nome da tag.",
-        tags: ["Cards"],
-        parameters: [
-          {
-            in: "path",
-            name: "name",
-            type: "string",
-            required: true,
-          },
-        ],
-        responses: {
-          200: {
-            description: "OK",
-          },
-          400: {
-            description: "Não existem cards com o nome digitado.",
-          },
-        },
-      },
-    },
-    "/cards/{id}": {
       put: {
         description: "Atualiza um card pelo id.",
         tags: ["Cards"],
@@ -169,7 +153,7 @@ export const swaggerDocument = {
         },
       },
     },
-    "/tags/findCardById/{cardId}": {
+    "/tags/cards/{cardId}": {
       post: {
         description: "Cria uma tag.",
         tags: ["Tags"],
@@ -213,20 +197,20 @@ export const swaggerDocument = {
         },
       },
     },
-    "/tags/findCardById/{cardId}/findTagById/{id}": {
+    "/tags/{tagId}/cards/{cardId}": {
       get: {
         description: "Lista uma tag pelo id.",
         tags: ["Tags"],
         parameters: [
           {
             in: "path",
-            name: "cardId",
+            name: "tagId",
             type: "string",
             required: true,
           },
           {
             in: "path",
-            name: "id",
+            name: "cardId",
             type: "string",
             required: true,
           },
@@ -246,13 +230,13 @@ export const swaggerDocument = {
         parameters: [
           {
             in: "path",
-            name: "cardId",
+            name: "tagId",
             type: "string",
             required: true,
           },
           {
             in: "path",
-            name: "id",
+            name: "cardId",
             type: "string",
             required: true,
           },
@@ -294,13 +278,13 @@ export const swaggerDocument = {
         parameters: [
           {
             in: "path",
-            name: "cardId",
+            name: "tagId",
             type: "string",
             required: true,
           },
           {
             in: "path",
-            name: "id",
+            name: "cardId",
             type: "string",
             required: true,
           },
