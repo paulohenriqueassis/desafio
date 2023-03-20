@@ -13,7 +13,7 @@ csvtojson()
       try {
         await CardsService.createCard(card);
       } catch (error) {
-        console.log("Erro ao tentar subir dado no banco.");
+        console.log("Erro ao tentar subir csv no banco.");
       }
     }
   });
