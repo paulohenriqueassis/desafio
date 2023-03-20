@@ -42,7 +42,7 @@ async function deleteTag(tagInfo) {
   try {
     const card = await CardRepository.getCardById(tagInfo.cardId);
     const tagIndex = card.tags.findIndex(
-      (tag) => tag._id.toHexString() === tagInfo.id
+      (tag) => tag._id.toHexString() === tagInfo.tagId
     );
     card.tags.splice(tagIndex, 1);
     card.data_modificacao = tagInfo.data_modificacao;
