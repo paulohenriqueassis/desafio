@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mongo:
+    container_name: insights_database
+    image: mongo:6
+    restart: always
+    networks:
+      - insights_network
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    container_name: insights_container
+    image: node:18
+    working_dir: /app
+    restart: always
+    command: bash -c "npm install && npm run start"
+    networks:
+      - insights_network
+    volumes:
+      - .:/app
+      - ./package.json:/app/package.json
+    ports: 
+      - "3000:3000"
+    links:
+      - mongo
+networks:
+  insights_network:
+    name: insights_network
+    driver: bridge
+    external: true
