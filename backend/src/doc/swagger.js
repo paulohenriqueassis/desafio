@@ -36,6 +36,11 @@ export const swaggerDocument = {
                 example: {
                   texto: "Futebol - Alemanha x brasil",
                   data_criacao: "19-03-2023 às 20:30:00",
+                  tags: [
+                    {
+                      name: "Gol!",
+                    },
+                  ],
                 },
               },
             },
