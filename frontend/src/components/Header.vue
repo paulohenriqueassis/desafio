@@ -30,11 +30,6 @@
 <script>
 export default {
   name: "Header",
-  computed: {
-    nome() {
-      return this.$store.state.usuario.nome.replace(/ .*/, "");
-    },
-  },
 };
 </script>
 
