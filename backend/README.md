@@ -1,6 +1,6 @@
 # Insights
 
-Aplicação para criação de cards de conteúdo esportivos.
+Backend da aplicação para criação de cards de conteúdo esportivos.
 
 ### Como executar a aplicação
 
