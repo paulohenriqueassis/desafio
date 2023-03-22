@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import CreateInsights from "../views/CreateInsights.vue";
+import HandleInsights from "../views/HandleInsights.vue";
 
 Vue.use(VueRouter);
 
@@ -12,15 +12,16 @@ const routes = [
     component: Home,
   },
   {
-    path: "/cards",
+    path: "/card/:cardId",
     name: "Publicar",
-    component: CreateInsights,
+    component: HandleInsights,
+    props: true,
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: '/',
   routes,
 });
 

@@ -3,22 +3,39 @@
     <v-container>
       <v-row>
         <v-col v-for="card in cards" :key="card._id" cols="12">
-          <v-card class="v-card" height="150" width="100%">
-            <p class="card-data">Criado em {{ card.data_criacao }}</p>
+          <v-card class="v-card" height="100%" width="100%">
+            <!-- <p class="card-data">Criado em {{ card.data_criacao }}</p>
             <p v-if="card.data_modificacao" class="card-data">
               Modificado em {{ card.data_modificacao }}
+            </p> -->
+            <div class="btns">
+              <router-link :to="{path: '/card/' + card._id}">
+                <v-btn fab x-small>
+                  <v-icon dark> mdi-pencil </v-icon>
+                </v-btn>
+              </router-link>
+              <v-btn fab x-small @click="deleteCard(card._id)">
+                <v-icon dark> mdi-delete </v-icon>
+              </v-btn>
+            </div>
+            <p v-for="tag in card.tags" :key="tag.name" class="card-tag">
+              {{ tag.name }}
             </p>
-            <p class="card-tag">Futebol</p>
             <p class="card-texto">{{ card.texto }}</p>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <v-card v-if="!cards.length" height="150" width="100%">
+      <p>Não há cards cadastrados!</p>
+    </v-card>
+    <template> </template>
   </v-main>
 </template>
 
 <script>
 export default {
+  name: "Main",
   data() {
     return {
       cards: "",
@@ -28,25 +45,19 @@ export default {
     this.getCards();
   },
   methods: {
-    getCards() {
-      const url = "http://localhost:3000/cards/";
-      fetch(url)
-        .then((res) => res.json())
-        .then((res) => {
-          const json = JSON.parse(JSON.stringify(res));
-          this.cards = json;
-          console.log(this.cards);
-        });
+    async getCards() {
+      await this.$store.dispatch("getCards", this.$store.state.cards)
+      this.cards = this.$store.state.cards;
     },
+    async deleteCard(id) {
+      await this.$store.dispatch("deleteCard", id)
+      this.getCards()
+    }
   },
 };
 </script>
 
 <style scoped>
-.container-app {
-  /* border: 1px solid red; */
-}
-
 .v-card {
   display: flex;
   flex-direction: column;
@@ -55,10 +66,14 @@ export default {
   text-align: center;
 }
 
+.btns {
+  margin-left: auto;
+}
+
 .card-data {
   font-size: 0.7em;
   color: #aaa8a8;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .card-texto {
@@ -82,6 +97,7 @@ export default {
   margin-top: -30px;
   max-height: 500px;
 }
+
 .main::-webkit-scrollbar {
   width: 3px;
   height: 3px;

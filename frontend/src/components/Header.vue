@@ -9,7 +9,7 @@
           <img src="../assets/perfil.png" alt="" />
         </div>
       </div>
-      <router-link to="/cards">
+      <router-link to="/card/create">
         <v-btn icon>
           <v-icon size="30" color="#ed4d77">mdi-plus</v-icon>
         </v-btn>

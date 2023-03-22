@@ -1,8 +1,8 @@
 <template>
   <section>
-    <Header />
+    <Header app-data />
     <Main />
-    <Footer />
+    <Footer app-data />
   </section>
 </template>
 
@@ -30,5 +30,4 @@ html {
 a {
   text-decoration: none;
 }
-
 </style>
