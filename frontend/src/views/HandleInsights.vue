@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container fluid>
-      <v-app-bar id="app-bar" height="100" src="../assets/background.svg">
+      <v-app-bar id="app-bar" app height="100" src="../assets/background.svg">
         <v-container>
           <v-row align="center">
             <v-col col="4">
@@ -38,7 +38,6 @@
             :items="items"
             label="Escolha a sua tag"
           ></v-autocomplete>
-          {{tagName}}
         </v-container>
       </v-card>
       <v-btn

@@ -4,17 +4,11 @@
       <v-row>
         <v-col v-for="card in cards" :key="card._id" cols="12">
           <v-card class="v-card" height="100%" width="100%">
-            <!-- <p class="card-data">Criado em {{ card.data_criacao }}</p>
-            <p v-if="card.data_modificacao" class="card-data">
-              Modificado em {{ card.data_modificacao }}
-            </p> -->
             <div class="btns">
-              <router-link :to="{path: '/card/' + card._id}">
-                <v-btn fab x-small>
-                  <v-icon dark> mdi-pencil </v-icon>
-                </v-btn>
-              </router-link>
-              <v-btn fab x-small @click="deleteCard(card._id)">
+              <v-btn fab x-small :to="`/card/${card._id}`">
+                <v-icon dark> mdi-pencil </v-icon>
+              </v-btn>
+              <v-btn fab x-small @click.stop="$emit('deleteCard', card._id)">
                 <v-icon dark> mdi-delete </v-icon>
               </v-btn>
             </div>
@@ -26,9 +20,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-card v-if="!cards.length" height="150" width="100%">
-      <p>Não há cards cadastrados!</p>
-    </v-card>
+    <p class="no-cards" v-if="!cards">Não há insights cadastrados!</p>
     <template> </template>
   </v-main>
 </template>
@@ -36,23 +28,10 @@
 <script>
 export default {
   name: "Main",
-  data() {
-    return {
-      cards: "",
-    };
-  },
-  created() {
-    this.getCards();
-  },
-  methods: {
-    async getCards() {
-      await this.$store.dispatch("getCards", this.$store.state.cards)
-      this.cards = this.$store.state.cards;
+  props: {
+    cards: {
+      type: Array,
     },
-    async deleteCard(id) {
-      await this.$store.dispatch("deleteCard", id)
-      this.getCards()
-    }
   },
 };
 </script>
@@ -64,6 +43,13 @@ export default {
   align-items: center;
   padding: 10px;
   text-align: center;
+}
+
+.no-cards {
+  text-align: center;
+  margin-top: 50px;
+  color: #ed4d77;
+  font-weight: bold;
 }
 
 .btns {

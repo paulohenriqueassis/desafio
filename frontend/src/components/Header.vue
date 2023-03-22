@@ -53,6 +53,7 @@ nav {
 }
 
 h1 {
+  color: #ffff;
   font-size: 1.5em;
 }
 

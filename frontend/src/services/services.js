@@ -17,7 +17,6 @@ export const api = {
     return axiosInstance.put(endpoint, body);
   },
   delete(endpoint) {
-    console.log(endpoint)
     return axiosInstance.delete(endpoint);
   },
 };
