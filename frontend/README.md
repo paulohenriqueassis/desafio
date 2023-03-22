@@ -1,24 +1,12 @@
-# frontend
+# Insights
 
-## Project setup
-```
-npm install
-```
+Front End da aplicação para criação de cards de conteúdo esportivos.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Como executar a aplicação
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Execute os seguinte comandos no terminal:
+- **npm install** 
+- **npm run serve** 
 
-### Lints and fixes files
-```
-npm run lint
-```
+*Obs: Se certifique de estar rodando o projeto backend nesse mesmo repositório para a criação dos Insights*
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
