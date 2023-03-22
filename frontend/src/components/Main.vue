@@ -20,7 +20,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <p class="no-cards" v-if="!cards">Não há insights cadastrados!</p>
+    <p class="no-cards" v-if="!cards.length">Não há insights cadastrados!</p>
     <template> </template>
   </v-main>
 </template>
