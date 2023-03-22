@@ -19,5 +19,5 @@ function formatDate() {
   )}:${formatUnitTime(seconds)}`;
 
   const localeDate = date.toLocaleDateString("pt-BR", { timeZone: "UTC" });
-  return `${localeDate} às ${fullHour}}`;
+  return `${localeDate} às ${fullHour}`;
 }
